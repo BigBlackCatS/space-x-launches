@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SideBar from './components/SideBarComponent';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/HomeComponent';
+import PastLaunches from './components/PastLaunches';
+import PastLaunchDetails from './components/PastLaunchDetailsComponent';
+import UpcomingLaunches from './components/UpcomingLaunches';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ display: "flex", height: "100vh" }}>
+      <SideBar></SideBar>
+      <section style={{ width:"100%" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="pastLaunches" element={<PastLaunches />}/>
+          <Route path="upcomingLaunches" element={<UpcomingLaunches />} />
+          <Route path="pastLaunches/details/:id" element={<PastLaunchDetails />} />
+        </Routes>
+      </section>
     </div>
   );
 }
